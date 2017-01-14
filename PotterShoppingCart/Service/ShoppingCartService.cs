@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PotterShoppingCart.Entity;
 
 namespace PotterShoppingCart.Service
@@ -12,7 +13,7 @@ namespace PotterShoppingCart.Service
 
         public int GetPotterSerialTotalPrice(Order order)
         {
-            throw new NotImplementedException();
+            return order.Details.Sum(p => p.Key.Price * p.Value);
         }
     }
 }

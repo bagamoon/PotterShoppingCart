@@ -7,13 +7,21 @@ namespace PotterShoppingCart.Entity
     {
         public Order()
         {
+            Details = new Dictionary<Book, int>();
         }
 
         public Dictionary<Book, int> Details { get; private set; }
 
         public void AddBook(Book book, int count)
         {
-            throw new NotImplementedException();
+            if (Details.ContainsKey(book))
+            {
+                Details[book]++;
+            }
+            else
+            {
+                Details.Add(book, 1);
+            }
         }
     }
 }
