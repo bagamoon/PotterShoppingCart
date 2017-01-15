@@ -16,11 +16,11 @@ namespace PotterShoppingCart.Entity
         {
             if (Details.ContainsKey(book))
             {
-                Details[book]++;
+                Details[book] += count;
             }
             else
             {
-                Details.Add(book, 1);
+                Details.Add(book, count);
             }
         }
     }
