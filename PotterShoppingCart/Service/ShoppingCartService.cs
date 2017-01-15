@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using PotterShoppingCart.Entity;
 
@@ -14,16 +13,27 @@ namespace PotterShoppingCart.Service
         public decimal GetPotterSerialTotalPrice(Order order)
         {
             decimal totalPrice = 0;
-            if (order.Details.Keys.Count == 1)
+            int pack = 1;
+            while (order.Details.Values.Any(p => p >= pack))
             {
-                totalPrice = order.Details.Sum(p => p.Key.Price * p.Value);
-            }
-            else if (order.Details.Keys.Count == 2)
-            {
-                int pair = order.Details.Values.Min();
-                decimal pairPrice = pair * order.Details.Sum(p => p.Key.Price) * 0.95M;
-                decimal restPrice = order.Details.Sum(p => p.Key.Price * (p.Value - pair));
-                totalPrice = pairPrice + restPrice;
+                var bookInPack = order.Details.Where(p => p.Value >= pack);
+
+                switch (bookInPack.Count())
+                {
+                    case 1:
+                        totalPrice += bookInPack.First().Key.Price;
+                        break;
+
+                    case 2:
+                        totalPrice += bookInPack.Sum(p => p.Key.Price) * 0.95M;
+                        break;
+
+                    case 3:
+                        totalPrice += bookInPack.Sum(p => p.Key.Price) * 0.9M;
+                        break;
+                }
+
+                pack++;
             }
 
             //佛心老闆使用無條件捨去
