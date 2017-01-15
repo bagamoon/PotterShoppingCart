@@ -37,7 +37,7 @@ namespace PotterShoppingCart.Tests
             int expected = 100;
 
             var target = new ShoppingCartService();
-            int actual = target.GetPotterSerialTotalPrice(order);
+            decimal actual = target.GetPotterSerialTotalPrice(order);
 
             Assert.AreEqual(expected, actual);
         }
@@ -52,7 +52,7 @@ namespace PotterShoppingCart.Tests
             int expected = 190;
 
             var target = new ShoppingCartService();
-            int actual = target.GetPotterSerialTotalPrice(order);
+            decimal actual = target.GetPotterSerialTotalPrice(order);
 
             Assert.AreEqual(expected, actual);
         }

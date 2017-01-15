@@ -11,9 +11,23 @@ namespace PotterShoppingCart.Service
         {
         }
 
-        public int GetPotterSerialTotalPrice(Order order)
+        public decimal GetPotterSerialTotalPrice(Order order)
         {
-            return order.Details.Sum(p => p.Key.Price * p.Value);
+            decimal totalPrice = 0;
+            if (order.Details.Keys.Count == 1)
+            {
+                totalPrice = order.Details.Sum(p => p.Key.Price * p.Value);
+            }
+            else if (order.Details.Keys.Count == 2)
+            {
+                int pair = order.Details.Values.Min();
+                decimal pairPrice = pair * order.Details.Sum(p => p.Key.Price) * 0.95M;
+                decimal restPrice = order.Details.Sum(p => p.Key.Price * (p.Value - pair));
+                totalPrice = pairPrice + restPrice;
+            }
+
+            //佛心老闆使用無條件捨去
+            return Math.Floor(totalPrice);
         }
     }
 }
