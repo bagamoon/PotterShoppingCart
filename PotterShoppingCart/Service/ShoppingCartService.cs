@@ -10,9 +10,17 @@ namespace PotterShoppingCart.Service
         {
         }
 
+        /// <summary>
+        /// 依據哈利波特系列書的購買套數(2本以上不重複就算)計算折扣後的總金額, 不成套以原價計算
+        /// 計算結果以無條件捨去至整數位回傳
+        /// </summary>
+        /// <param name="order">訂單</param>
+        /// <returns>總金額</returns>
         public decimal GetPotterSerialTotalPrice(Order order)
         {
             decimal totalPrice = 0;
+
+            //以while逐一取得每套不重複書籍數量計算金額, 直至套數超過最大單本數量
             int pack = 1;
             while (order.Details.Values.Any(p => p >= pack))
             {

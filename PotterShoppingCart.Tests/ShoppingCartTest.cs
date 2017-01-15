@@ -139,5 +139,18 @@ namespace PotterShoppingCart.Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Test_Empty_Order_Is_0()
+        {
+            var order = new Order();            
+
+            int expected = 0;
+
+            var target = new ShoppingCartService();
+            decimal actual = target.GetPotterSerialTotalPrice(order);
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
