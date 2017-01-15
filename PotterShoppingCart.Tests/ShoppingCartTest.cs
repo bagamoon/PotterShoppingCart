@@ -123,5 +123,21 @@ namespace PotterShoppingCart.Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Test_Buy_1_Book1_2_Book2_2_Book3_Total_Is_460()
+        {
+            var order = new Order();
+            order.AddBook(hp1, 1);
+            order.AddBook(hp2, 2);
+            order.AddBook(hp3, 2);
+
+            int expected = 460;
+
+            var target = new ShoppingCartService();
+            decimal actual = target.GetPotterSerialTotalPrice(order);
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
