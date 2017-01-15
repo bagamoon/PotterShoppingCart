@@ -31,6 +31,10 @@ namespace PotterShoppingCart.Service
                     case 3:
                         totalPrice += bookInPack.Sum(p => p.Key.Price) * 0.9M;
                         break;
+
+                    case 4:
+                        totalPrice += bookInPack.Sum(p => p.Key.Price) * 0.8M;
+                        break;
                 }
 
                 pack++;
