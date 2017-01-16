@@ -39,8 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\PackOf1PotterDiscount.cs" />
+    <Compile Include="Domain\PackOf3PotterDiscount.cs" />
+    <Compile Include="Domain\PackOf2PotterDiscount.cs" />
+    <Compile Include="Domain\PackOf4PotterDiscount.cs" />
+    <Compile Include="Domain\PackOf5PotterDiscount.cs" />
     <Compile Include="Entity\Book.cs" />
     <Compile Include="Entity\Order.cs" />
+    <Compile Include="Interface\IDiscount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ShoppingCartService.cs" />
   </ItemGroup>
