@@ -34,7 +34,9 @@ namespace PotterShoppingCart.Entity.Tests
             int expectedQuantity = 2;
 
             var target = new Order();
-            target.AddBook(book, 2);
+            //改為連續加入兩次, 驗證AddBook有處理同一本書重複加入
+            target.AddBook(book, 1);
+            target.AddBook(book, 1);
 
             int actualCount = target.Details.Count;
             int actualQuantity = target.Details[book];

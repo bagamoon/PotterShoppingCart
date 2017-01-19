@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PotterShoppingCart.Entity;
 using PotterShoppingCart.Service;
 
@@ -31,8 +32,12 @@ namespace PotterShoppingCart.Tests.Service
         [TestMethod]
         public void Test_Buy_1_Book1_Total_Is_100()
         {
-            var order = new Order();
-            order.Details.Add(hp1, 1);
+            Dictionary<Book, int> details = new Dictionary<Book, int>
+                                                {
+                                                    { hp1, 1 }
+                                                };
+
+            var order = new Order(details);            
 
             int expected = 100;
 
@@ -45,9 +50,13 @@ namespace PotterShoppingCart.Tests.Service
         [TestMethod]
         public void Test_Buy_1_Book1_1_Book2_Total_Is_190()
         {
-            var order = new Order();
-            order.Details.Add(hp1, 1);
-            order.Details.Add(hp2, 1);
+            Dictionary<Book, int> details = new Dictionary<Book, int>
+                                                {
+                                                    { hp1, 1 },
+                                                    { hp2, 1 }
+                                                };
+
+            var order = new Order(details);
 
             int expected = 190;
 
@@ -60,10 +69,14 @@ namespace PotterShoppingCart.Tests.Service
         [TestMethod]
         public void Test_Buy_1_Book1_1_Book2_1_Book3_Total_Is_270()
         {
-            var order = new Order();
-            order.Details.Add(hp1, 1);
-            order.Details.Add(hp2, 1);
-            order.Details.Add(hp3, 1);
+            Dictionary<Book, int> details = new Dictionary<Book, int>
+                                                {
+                                                    { hp1, 1 },
+                                                    { hp2, 1 },
+                                                    { hp3, 1 }
+                                                };
+
+            var order = new Order(details);
 
             int expected = 270;
 
@@ -76,11 +89,15 @@ namespace PotterShoppingCart.Tests.Service
         [TestMethod]
         public void Test_Buy_1_Book1_1_Book2_1_Book3_1_Book4_Total_Is_320()
         {
-            var order = new Order();
-            order.Details.Add(hp1, 1);
-            order.Details.Add(hp2, 1);
-            order.Details.Add(hp3, 1);
-            order.Details.Add(hp4, 1);
+            Dictionary<Book, int> details = new Dictionary<Book, int>
+                                                {
+                                                    { hp1, 1 },
+                                                    { hp2, 1 },
+                                                    { hp3, 1 },
+                                                    { hp4, 1 }
+                                                };
+
+            var order = new Order(details);
 
             int expected = 320;
 
@@ -93,12 +110,16 @@ namespace PotterShoppingCart.Tests.Service
         [TestMethod]
         public void Test_Buy_Each_From_Book1_To_Book5_Is_375()
         {
-            var order = new Order();
-            order.Details.Add(hp1, 1);
-            order.Details.Add(hp2, 1);
-            order.Details.Add(hp3, 1);
-            order.Details.Add(hp4, 1);
-            order.Details.Add(hp5, 1);
+            Dictionary<Book, int> details = new Dictionary<Book, int>
+                                                {
+                                                    { hp1, 1 },
+                                                    { hp2, 1 },
+                                                    { hp3, 1 },
+                                                    { hp4, 1 },
+                                                    { hp5, 1 }
+                                                };
+
+            var order = new Order(details);
 
             int expected = 375;
 
@@ -111,10 +132,14 @@ namespace PotterShoppingCart.Tests.Service
         [TestMethod]
         public void Test_Buy_1_Book1_1_Book2_2_Book3_Total_Is_370()
         {
-            var order = new Order();
-            order.Details.Add(hp1, 1);
-            order.Details.Add(hp2, 1);
-            order.Details.Add(hp3, 2);
+            Dictionary<Book, int> details = new Dictionary<Book, int>
+                                                {
+                                                    { hp1, 1 },
+                                                    { hp2, 1 },
+                                                    { hp3, 2 }
+                                                };
+
+            var order = new Order(details);
 
             int expected = 370;
 
@@ -127,10 +152,14 @@ namespace PotterShoppingCart.Tests.Service
         [TestMethod]
         public void Test_Buy_1_Book1_2_Book2_2_Book3_Total_Is_460()
         {
-            var order = new Order();
-            order.Details.Add(hp1, 1);
-            order.Details.Add(hp2, 2);
-            order.Details.Add(hp3, 2);
+            Dictionary<Book, int> details = new Dictionary<Book, int>
+                                                {
+                                                    { hp1, 1 },
+                                                    { hp2, 2 },
+                                                    { hp3, 2 }
+                                                };
+
+            var order = new Order(details);
 
             int expected = 460;
 
@@ -143,9 +172,13 @@ namespace PotterShoppingCart.Tests.Service
         [TestMethod]
         public void Test_Buy_101_Book1_1_Book2_Total_Is_10190()
         {
-            var order = new Order();
-            order.Details.Add(hp1, 101);
-            order.Details.Add(hp2, 1);
+            Dictionary<Book, int> details = new Dictionary<Book, int>
+                                                {
+                                                    { hp1, 101 },
+                                                    { hp2, 1 }                                                    
+                                                };
+
+            var order = new Order(details);
 
             int expected = 10190;
 
